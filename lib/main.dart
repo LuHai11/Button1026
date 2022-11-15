@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blueGrey,
       ),
-      home: const MyHomePage(title: '期中實做作業'),
+      home: const MyHomePage(title: 'Button1026'),
     );
   }
 }
@@ -50,10 +50,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-
-  int counter = 0;
-  final imglist = ['asset/pipi1.jpg','asset/pipi2.jpg','asset/pipi3.jpg','asset/pipi4.jpg'];
-  final imgname = ['pipi1','pipi2','pipi3','pipi4'];
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -63,12 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
-  }
-  tmpFunction() {
-    Container(
-      child: Image(image: AssetImage(imglist[counter]),
-      ),
-    );
   }
   @override
   Widget build(BuildContext context) {
