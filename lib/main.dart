@@ -49,17 +49,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+
+  final ButtonStyle flatButtonStyle = TextButton.styleFrom(
+    primary: Colors.white,
+    minimumSize: Size(88, 44),
+    padding: EdgeInsets.symmetric(horizontal: 16.0),
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(2.0)),
+    ),
+    backgroundColor: Colors.blueGrey,
+  );
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         Column(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 300),
+              padding: EdgeInsets.only(top: 250),
             child:ElevatedButton(onPressed: (){
               final snackBar1 = SnackBar(
                 content: Text('你按了ElevatedButton'),
@@ -90,6 +90,18 @@ class _MyHomePageState extends State<MyHomePage> {
               ScaffoldMessenger.of(context).showSnackBar(snackBar1);
             }, child: Text('ElevatedButton')),
             ),
+
+            TextButton(
+                style: flatButtonStyle,
+                onPressed: (){
+                  final snackBar1 = SnackBar(
+                    content: Text('你按了flatButton'),
+                    action: SnackBarAction(
+                      label: 'Toast訊息',
+                      onPressed:() =>Fluttertoast.showToast(msg: '你按下snackBar'),
+                    ),);
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar1);
+            }, child:Text('FlatButton')),
 
             OutlinedButton(onPressed: (){
               final snackBar2 = SnackBar(
@@ -102,7 +114,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ScaffoldMessenger.of(context).showSnackBar(snackBar2);
             }, child: Text('OutlinedButton')),
 
-
             IconButton(onPressed: (){
               final snackBar3 = SnackBar(
                 content: Text('你按了IconButton'),
@@ -113,6 +124,32 @@ class _MyHomePageState extends State<MyHomePage> {
               );
               ScaffoldMessenger.of(context).showSnackBar(snackBar3);
             }, icon: Icon(Icons.send)),
+
+            FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: (){
+                final snackBar1 = SnackBar(
+                  content: Text('你按了FloatingActionButton'),
+                  action: SnackBarAction(
+                    label: 'Toast訊息',
+                    onPressed:() =>Fluttertoast.showToast(msg: '你按下snackBar'),
+                  ),);
+                ScaffoldMessenger.of(context).showSnackBar(snackBar1);
+              },
+            ),
+            ElevatedButton.icon(
+              icon: Icon(Icons.save),
+                label: Text('ElevatedButton.icon'),
+                onPressed: (){
+                final snackBar1 = SnackBar(
+                  content: Text('你按了ElevatedButton.icon'),
+                  action: SnackBarAction(
+                    label: 'Toast訊息',
+                    onPressed:() =>Fluttertoast.showToast(msg: '你按下snackBar'),
+                ),);
+              ScaffoldMessenger.of(context).showSnackBar(snackBar1);
+            }
+            ),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
